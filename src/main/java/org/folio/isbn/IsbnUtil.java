@@ -1,7 +1,7 @@
 package org.folio.isbn;
 
 /**
- * Class with utility methods for working with ISBN number
+ * Class with utility methods for working with ISBN number: convert and validate
  */
 public class IsbnUtil {
 
