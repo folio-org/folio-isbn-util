@@ -11,7 +11,7 @@ ISBN number converter utilities.
 
 ## Additional information
 
-* See project [MODSOURMAN](https://issues.folio.org/browse/MODSOURMAN)
+* See project [ISBNUTIL](https://issues.folio.org/browse/ISBNUTIL)
 at the [FOLIO issue tracker](https://dev.folio.org/guidelines/issue-tracker).
 
 * Other FOLIO Developer documentation is at [dev.folio.org](https://dev.folio.org/)
