@@ -17,23 +17,23 @@ public final class IsbnUtil {
   /**
    * Check the code is a valid ISBN-10 code.
    *
-   * @param number The code to validate.
+   * @param isbn10 The code to validate.
    * @return <code>true</code> if a valid ISBN-10
    * code, otherwise <code>false</code>.
    */
-  public static boolean isValidTenDigitNumber(String number) {
-    return validator.isValidISBN10(number);
+  public static boolean isValid10DigitNumber(String isbn10) {
+    return validator.isValidISBN10(isbn10);
   }
 
   /**
    * Check the code is a valid ISBN-13 code.
    *
-   * @param number The code to validate.
+   * @param isbn13 The code to validate.
    * @return <code>true</code> if a valid ISBN-13
    * code, otherwise <code>false</code>.
    */
-  public static boolean isValidThirteenDigitNumber(String number) {
-    return validator.isValidISBN13(number);
+  public static boolean isValid13DigitNumber(String isbn13) {
+    return validator.isValidISBN13(isbn13);
   }
 
   /**
@@ -46,7 +46,7 @@ public final class IsbnUtil {
    * @return A converted ISBN-13 code or <code>null</code>
    * if the ISBN-10 code is not valid
    */
-  public static String convertToThirteenDigitNumber(String isbn10) {
+  public static String convertTo13DigitNumber(String isbn10) {
     return validator.convertToISBN13(validator.validateISBN10(isbn10));
   }
 
@@ -64,7 +64,7 @@ public final class IsbnUtil {
    * @author Julian Ladisch
    *
    */
-  public static String convertToTenDigitNumber(String isbn13) {
+  public static String convertTo10DigitNumber(String isbn13) {
     String input = validator.validateISBN13(isbn13);
     if (input == null) {
       return null;
