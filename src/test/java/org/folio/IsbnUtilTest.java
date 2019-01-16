@@ -52,6 +52,7 @@ public class IsbnUtilTest extends TestCase {
   public void testInvalidTenDigitsIsbn() {
     assertFalse(IsbnUtil.isValidTenDigitNumber(null));
     assertFalse(IsbnUtil.isValidTenDigitNumber(""));
+    assertFalse(IsbnUtil.isValidTenDigitNumber("012 27460 58"));
     // no alphas allowed in ISBN-10 except check digit of X
     assertFalse(IsbnUtil.isValidTenDigitNumber("BR18694353"));
     assertFalse(IsbnUtil.isValidTenDigitNumber("0317Y63929"));
@@ -75,6 +76,7 @@ public class IsbnUtilTest extends TestCase {
   public void testInvalidThirteenDigitsIsbn() {
     assertFalse(IsbnUtil.isValidThirteenDigitNumber(null));
     assertFalse(IsbnUtil.isValidThirteenDigitNumber(""));
+    assertFalse(IsbnUtil.isValidThirteenDigitNumber("97819 301109 91"));
     // can never be an X check digit on a 13-digit ISBN
     assertFalse(IsbnUtil.isValidThirteenDigitNumber("978033521257X"));
     assertFalse(IsbnUtil.isValidThirteenDigitNumber("978041536907X"));
@@ -102,8 +104,10 @@ public class IsbnUtilTest extends TestCase {
     assertFalse(IsbnUtil.isValidThirteenDigitNumber("978179491128"));
   }
 
-  public void testValidConversion10To13Digits() {
+  public void testConversion10To13Digits() {
     assertNull(IsbnUtil.convertToThirteenDigitNumber(null));
+    assertNull(IsbnUtil.convertToThirteenDigitNumber("978"));
+    assertNull(IsbnUtil.convertToThirteenDigitNumber("8992a83426"));
 
     assertEquals("9788992783422", IsbnUtil.convertToThirteenDigitNumber("8992783426"));
     assertEquals("9780845144022", IsbnUtil.convertToThirteenDigitNumber("0845144022"));
@@ -114,23 +118,20 @@ public class IsbnUtilTest extends TestCase {
     assertEquals("9780122746031", IsbnUtil.convertToThirteenDigitNumber("0122746031"));
     assertEquals("9780122746048", IsbnUtil.convertToThirteenDigitNumber("012274604X"));
 
-    try {
-      IsbnUtil.convertToThirteenDigitNumber("978");
-      fail("3 digit length should throw IllegalArgumentException");
-    } catch (IllegalArgumentException e) {
-      assertNotNull(e.getMessage());
-    }
-    try {
-      IsbnUtil.convertToThirteenDigitNumber("8992a83426");
-      fail("Illegal character a should throw IllegalArgumentException");
-    } catch (IllegalArgumentException e) {
-      assertNotNull(e.getMessage());
-    }
+    assertEquals("9781930110991", IsbnUtil.convertToThirteenDigitNumber("1930110995"));
+    assertEquals("9781930110991", IsbnUtil.convertToThirteenDigitNumber("1-930110-99-5"));
+    assertEquals("9781930110991", IsbnUtil.convertToThirteenDigitNumber("1 930110 99 5"));
+
+    assertEquals("9780201633856", IsbnUtil.convertToThirteenDigitNumber(" 020163385X "));
+    assertEquals("9780201633856", IsbnUtil.convertToThirteenDigitNumber(" 0-201-63385-X "));
+    assertEquals("9780201633856", IsbnUtil.convertToThirteenDigitNumber(" 0 201 63385 X "));
   }
 
-  public void testValidConversion13To10Digits() {
+  public void testConversion13To10Digits() {
     assertNull(IsbnUtil.convertToTenDigitNumber(null));
     assertNull(IsbnUtil.convertToTenDigitNumber("9790201633856"));
+    assertNull(IsbnUtil.convertToTenDigitNumber("978"));
+    assertNull(IsbnUtil.convertToTenDigitNumber("978193a110991"));
 
     assertEquals("8992783426", IsbnUtil.convertToTenDigitNumber("9788992783422"));
     assertEquals("0845144022", IsbnUtil.convertToTenDigitNumber("9780845144022"));
@@ -141,18 +142,13 @@ public class IsbnUtilTest extends TestCase {
     assertEquals("0122746031", IsbnUtil.convertToTenDigitNumber("9780122746031"));
     assertEquals("012274604X", IsbnUtil.convertToTenDigitNumber("9780122746048"));
 
-    try {
-      IsbnUtil.convertToTenDigitNumber("978");
-      fail("3 digit length should throw IllegalArgumentException");
-    } catch (IllegalArgumentException e) {
-      assertNotNull(e.getMessage());
-    }
-    try {
-      IsbnUtil.convertToTenDigitNumber("978193a110991");
-      fail("Illegal character should throw IllegalArgumentException");
-    } catch (IllegalArgumentException e) {
-      assertNotNull(e.getMessage());
-    }
+    assertEquals("1930110995", IsbnUtil.convertToTenDigitNumber("9781930110991"));
+    assertEquals("1930110995", IsbnUtil.convertToTenDigitNumber("978-1-930110-99-1"));
+    assertEquals("1930110995", IsbnUtil.convertToTenDigitNumber("978 1 930110 99 1"));
+
+    assertEquals("020163385X", IsbnUtil.convertToTenDigitNumber(" 9780201633856 "));
+    assertEquals("020163385X", IsbnUtil.convertToTenDigitNumber(" 978-0-201-63385-6 "));
+    assertEquals("020163385X", IsbnUtil.convertToTenDigitNumber(" 978 0 201 63385 6 "));
   }
 
 }
