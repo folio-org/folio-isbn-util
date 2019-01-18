@@ -69,6 +69,11 @@ public final class IsbnUtil {
     if (input == null) {
       return null;
     }
+
+    if (! input.startsWith("978")) {
+      return null;
+    }
+
     // drop "978" and the original check digit
     String isbn10 = input.substring(3, 12);
     try {
