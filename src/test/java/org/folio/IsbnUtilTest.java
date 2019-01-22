@@ -47,6 +47,7 @@ public class IsbnUtilTest extends TestCase {
     assertTrue(IsbnUtil.isValid13DigitNumber("978-0-201-63385-6"));
     assertTrue(IsbnUtil.isValid13DigitNumber("978 0 201 63385 6"));
     assertTrue(IsbnUtil.isValid13DigitNumber("979-10-90636-07-1"));
+    assertTrue(IsbnUtil.isValid13DigitNumber("9791843123391"));
   }
 
   public void testInvalid10DigitsIsbn() {
@@ -130,6 +131,7 @@ public class IsbnUtilTest extends TestCase {
   public void testConversion13To10Digits() {
     assertNull(IsbnUtil.convertTo10DigitNumber(null));
     assertNull(IsbnUtil.convertTo10DigitNumber("9790201633856"));
+    assertNull(IsbnUtil.convertTo10DigitNumber("9791843123391"));
     assertNull(IsbnUtil.convertTo10DigitNumber("978"));
     assertNull(IsbnUtil.convertTo10DigitNumber("978193a110991"));
 
