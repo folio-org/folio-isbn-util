@@ -9,6 +9,7 @@ import org.apache.commons.validator.routines.checkdigit.ISBN10CheckDigit;
  */
 public final class IsbnUtil {
 
+  private static final String PREFIX__OF_ISBN13_ABLE_TO_CONVERT_TO_ISBN10 = "978"; //NOSONAR
   private static ISBNValidator validator = ISBNValidator.getInstance();
 
   private IsbnUtil() {
@@ -52,6 +53,7 @@ public final class IsbnUtil {
 
   /**
    * Convert an ISBN-13 code to an ISBN-10 code if possible.
+   * Only 978-prefixed ISBNs can be converted to ISBN-10.
    * <p>
    * This method accepts ISBN-13 with or without formatting
    * characters.
@@ -66,7 +68,7 @@ public final class IsbnUtil {
    */
   public static String convertTo10DigitNumber(String isbn13) {
     String input = validator.validateISBN13(isbn13);
-    if (input == null) {
+    if (input == null || !input.startsWith(PREFIX__OF_ISBN13_ABLE_TO_CONVERT_TO_ISBN10)) {
       return null;
     }
     // drop "978" and the original check digit
