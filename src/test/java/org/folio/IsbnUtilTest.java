@@ -153,4 +153,11 @@ public class IsbnUtilTest extends TestCase {
     assertEquals("020163385X", IsbnUtil.convertTo10DigitNumber(" 978 0 201 63385 6 "));
   }
 
+  public void testFormatIsbnWithHyphens() {
+    assertEquals("978-0-321-13002-0", IsbnUtil.formatWithHyphens("9780321130020"));
+    assertEquals("0-321-13002-2", IsbnUtil.formatWithHyphens("0321130022"));
+    assertEquals("979-10-90636-07-1", IsbnUtil.formatWithHyphens("9791090636071"));
+    assertEquals("978-0-12-274602-4", IsbnUtil.formatWithHyphens("9780122746024"));
+    assertEquals("999999999-9", IsbnUtil.formatWithHyphens("9999999999"));
+  }
 }

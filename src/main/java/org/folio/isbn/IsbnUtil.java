@@ -1,5 +1,7 @@
 package org.folio.isbn;
 
+import com.github.ladutsko.isbn.ISBNException;
+import com.github.ladutsko.isbn.ISBNFormat;
 import org.apache.commons.validator.routines.ISBNValidator;
 import org.apache.commons.validator.routines.checkdigit.CheckDigitException;
 import org.apache.commons.validator.routines.checkdigit.ISBN10CheckDigit;
@@ -10,7 +12,9 @@ import org.apache.commons.validator.routines.checkdigit.ISBN10CheckDigit;
 public final class IsbnUtil {
 
   private static final String PREFIX__OF_ISBN13_ABLE_TO_CONVERT_TO_ISBN10 = "978"; //NOSONAR
+  public static final String HYPHEN_GROUP_SEPARATOR = "-";
   private static ISBNValidator validator = ISBNValidator.getInstance();
+  private static ISBNFormat isbnFormatter = new ISBNFormat();
 
   private IsbnUtil() {
   }
@@ -77,6 +81,25 @@ public final class IsbnUtil {
       return isbn10 + ISBN10CheckDigit.ISBN10_CHECK_DIGIT.calculate(isbn10);
     } catch (CheckDigitException e) {
       throw new IllegalArgumentException("Check digit error for '" + isbn13 + "' - " + e.getMessage());
+    }
+  }
+
+  /**
+   * Format ISBN-10 or ISBN-13 code with hyphens.
+   *
+   * @param isbn The code to format.
+   * @return formatted ISBN
+   * @throws IllegalArgumentException if specified invalid ISBN code
+   * @see com.github.ladutsko.isbn.ISBNFormat#format(CharSequence, String)
+   */
+  public static String formatWithHyphens(String isbn) {
+    if (!(isValid10DigitNumber(isbn) || isValid13DigitNumber(isbn))) {
+      throw new IllegalArgumentException("ISBN value is invalid: " + isbn);
+    }
+    try {
+      return isbnFormatter.format(isbn, HYPHEN_GROUP_SEPARATOR);
+    } catch (ISBNException e) {
+      throw new IllegalArgumentException(e.getMessage(), e);
     }
   }
 }
