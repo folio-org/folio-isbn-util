@@ -92,7 +92,7 @@ public final class IsbnUtil {
    * @throws IllegalArgumentException if specified invalid ISBN code
    * @see com.github.ladutsko.isbn.ISBNFormat#format(CharSequence, String)
    */
-  public static String formatWithHyphens(String isbn) {
+  public static String insertHyphens(String isbn) {
     if (!(isValid10DigitNumber(isbn) || isValid13DigitNumber(isbn))) {
       throw new IllegalArgumentException("ISBN value is invalid: " + isbn);
     }
