@@ -4,6 +4,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import org.folio.isbn.IsbnUtil;
+import org.junit.Assert;
 
 /**
  * Unit test for App.
@@ -153,4 +154,20 @@ public class IsbnUtilTest extends TestCase {
     assertEquals("020163385X", IsbnUtil.convertTo10DigitNumber(" 978 0 201 63385 6 "));
   }
 
+  public void testInsertHyphensToIsbn() {
+    assertEquals("978-0-321-13002-0", IsbnUtil.insertHyphens("9780321130020"));
+    assertEquals("0-321-13002-2", IsbnUtil.insertHyphens("0321130022"));
+    assertEquals("979-10-90636-07-1", IsbnUtil.insertHyphens("9791090636071"));
+    assertEquals("978-0-12-274602-4", IsbnUtil.insertHyphens("9780122746024"));
+    assertEquals("999999999-9", IsbnUtil.insertHyphens("9999999999"));
+  }
+
+  public void testInsertHyphensToIsbnThrowExceptionWhenSpecifiedInvalidIsbn() {
+    try {
+      IsbnUtil.insertHyphens("BR18694353");
+      fail("Expected IllegalArgumentException when specified invalid ISBN");
+    } catch (IllegalArgumentException e) {
+      Assert.assertNotNull(e);
+    }
+  }
 }
