@@ -11,8 +11,8 @@ import org.apache.commons.validator.routines.checkdigit.ISBN10CheckDigit;
  */
 public final class IsbnUtil {
 
-  private static final String PREFIX__OF_ISBN13_ABLE_TO_CONVERT_TO_ISBN10 = "978"; //NOSONAR
-  public static final String HYPHEN_GROUP_SEPARATOR = "-";
+  private static final String PREFIX_OF_ISBN13_ABLE_TO_CONVERT_TO_ISBN10 = "978";
+  private static final String HYPHEN_GROUP_SEPARATOR = "-";
   private static ISBNValidator validator = ISBNValidator.getInstance();
   private static ISBNFormat isbnFormatter = new ISBNFormat();
 
@@ -72,7 +72,7 @@ public final class IsbnUtil {
    */
   public static String convertTo10DigitNumber(String isbn13) {
     String input = validator.validateISBN13(isbn13);
-    if (input == null || !input.startsWith(PREFIX__OF_ISBN13_ABLE_TO_CONVERT_TO_ISBN10)) {
+    if (input == null || !input.startsWith(PREFIX_OF_ISBN13_ABLE_TO_CONVERT_TO_ISBN10)) {
       return null;
     }
     // drop "978" and the original check digit
