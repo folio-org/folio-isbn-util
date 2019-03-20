@@ -1,3 +1,6 @@
+## 1.1.0 2019-03-20
+ * Implemented formatting of ISBN numbers with hyphens
+
 ## 1.0.0 2019-01-17
  * Implemented methods for validation and conversion of ISBN-10 and ISBN-13 numbers
 
