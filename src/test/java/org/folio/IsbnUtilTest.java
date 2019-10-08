@@ -170,4 +170,21 @@ public class IsbnUtilTest extends TestCase {
       Assert.assertNotNull(e);
     }
   }
+
+  public void testRemoveHyphens() {
+    assertEquals("9780321130020", IsbnUtil.removeHyphens("978-0-321-13002-0"));
+    assertEquals("0321130022", IsbnUtil.removeHyphens("0-321-13002-2"));
+    assertEquals("9791090636071", IsbnUtil.removeHyphens("979-10-90636-07-1"));
+    assertEquals("9780122746024", IsbnUtil.removeHyphens("978-0-12-274602-4"));
+    assertEquals("9999999999", IsbnUtil.removeHyphens("9999999999"));
+  }
+
+  public void testRemoveHyphensToIsbnThrowExceptionWhenSpecifiedInvalidIsbn() {
+    try {
+      IsbnUtil.removeHyphens("BR18694353");
+      fail("Expected IllegalArgumentException when specified invalid ISBN");
+    } catch (IllegalArgumentException e) {
+      Assert.assertNotNull(e);
+    }
+  }
 }
