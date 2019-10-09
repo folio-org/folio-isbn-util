@@ -1,3 +1,6 @@
+## 1.2.0 2019-10-09
+ * Added functionality to remove hyphens
+
 ## 1.1.0 2019-03-20
  * Implemented formatting of ISBN numbers with hyphens
 
