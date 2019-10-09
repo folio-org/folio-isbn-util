@@ -1,10 +1,14 @@
 package org.folio.isbn;
 
-import com.github.ladutsko.isbn.ISBNException;
-import com.github.ladutsko.isbn.ISBNFormat;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import org.apache.commons.validator.routines.ISBNValidator;
 import org.apache.commons.validator.routines.checkdigit.CheckDigitException;
 import org.apache.commons.validator.routines.checkdigit.ISBN10CheckDigit;
+
+import com.github.ladutsko.isbn.ISBNException;
+import com.github.ladutsko.isbn.ISBNFormat;
 
 /**
  * Class with utility methods for working with ISBN number
@@ -101,5 +105,12 @@ public final class IsbnUtil {
     } catch (ISBNException e) {
       throw new IllegalArgumentException(e.getMessage(), e);
     }
+  }
+
+  public static String removeHyphens(String isbn) {
+    if (!(isValid10DigitNumber(isbn) || isValid13DigitNumber(isbn))) {
+      throw new IllegalArgumentException("ISBN value is invalid: " + isbn);
+    }
+    return Stream.of(isbn.split("-")).collect(Collectors.joining());
   }
 }
