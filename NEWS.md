@@ -1,3 +1,6 @@
+## 1.3.0-SNAPSHOT 2021-01-11
+* [ISBNUTIL-11](https://issues.folio.org/browse/ISBNUTIL-11) Upgrade folio-isbn-util to Java 11.
+
 ## 1.2.0 2019-10-09
  * Added functionality to remove hyphens
 
