@@ -1,4 +1,7 @@
-## 1.3.0-SNAPSHOT 2021-01-11
+## 1.4.0 2022-05-23
+* [ISBNUTIL-15](https://issues.folio.org/browse/ISBNUTIL-15) Upgrade commons-validator from 1.6 to 1.7
+
+## 1.3.0 2021-01-11
 * [ISBNUTIL-11](https://issues.folio.org/browse/ISBNUTIL-11) Upgrade folio-isbn-util to Java 11.
 * [ISBNUTIL-10](https://issues.folio.org/browse/ISBNUTIL-10) Add personal data disclosure form.
 
