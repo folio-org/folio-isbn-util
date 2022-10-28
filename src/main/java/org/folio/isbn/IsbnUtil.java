@@ -9,6 +9,8 @@ import org.apache.commons.validator.routines.checkdigit.ISBN10CheckDigit;
 
 import com.github.ladutsko.isbn.ISBNException;
 import com.github.ladutsko.isbn.ISBNFormat;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Class with utility methods for working with ISBN number
@@ -17,6 +19,7 @@ public final class IsbnUtil {
 
   private static final String PREFIX_OF_ISBN13_ABLE_TO_CONVERT_TO_ISBN10 = "978";
   private static final String HYPHEN_GROUP_SEPARATOR = "-";
+  private static Logger logger = LogManager.getLogger(IsbnUtil.class);
   private static ISBNValidator validator = ISBNValidator.getInstance();
   private static ISBNFormat isbnFormatter = new ISBNFormat();
 
