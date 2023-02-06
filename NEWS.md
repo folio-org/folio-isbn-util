@@ -1,3 +1,9 @@
+## 1.5.0 2023-02-06
+* [MODDATAIMP-750](https://issues.folio.org/browse/MODDATAIMP-750) Update dependencies
+* [MODDATAIMP-736](https://issues.folio.org/browse/MODDATAIMP-736) Adjust logging configuration to display datetime in a proper format
+* [ISBNUTIL-14](https://issues.folio.org/browse/ISBNUTIL-14) Logging improvement
+* [ISBNUTIL-17](https://issues.folio.org/browse/ISBNUTIL-17) Logging improvement - Configuration
+
 ## 1.4.0 2022-05-23
 * [ISBNUTIL-15](https://issues.folio.org/browse/ISBNUTIL-15) Upgrade commons-validator from 1.6 to 1.7
 
