@@ -1,3 +1,6 @@
+## 1.6.0-SNAPSHOT 2023-XX-XX
+* [ISBNUTIL-19](https://issues.folio.org/browse/ISBNUTIL-19) Upgrade folio-isbn-util to Java 17
+
 ## 1.5.0 2023-02-06
 * [MODDATAIMP-750](https://issues.folio.org/browse/MODDATAIMP-750) Update dependencies
 * [MODDATAIMP-736](https://issues.folio.org/browse/MODDATAIMP-736) Adjust logging configuration to display datetime in a proper format
