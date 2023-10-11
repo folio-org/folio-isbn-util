@@ -1,4 +1,4 @@
-## 1.6.0-SNAPSHOT 2023-XX-XX
+## 1.6.0 2023-10-11
 * [ISBNUTIL-19](https://issues.folio.org/browse/ISBNUTIL-19) Upgrade folio-isbn-util to Java 17
 
 ## 1.5.0 2023-02-06
