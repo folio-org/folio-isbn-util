@@ -3,7 +3,7 @@
 
   <groupId>org.folio</groupId>
   <artifactId>folio-isbn-util</artifactId>
-  <version>1.7.1</version>
+  <version>1.7.2-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>folio-isbn-util</name>
   <organization>
@@ -56,7 +56,7 @@
     <url>https://github.com/folio-org/folio-isbn-util</url>
     <connection>scm:git:git@github.com:folio-org/folio-isbn-util.git</connection>
     <developerConnection>scm:git:git@github.com:folio-org/folio-isbn-util.git</developerConnection>
-    <tag>v1.7.1</tag>
+    <tag>v1.7.0</tag>
   </scm>
 
   <build>
