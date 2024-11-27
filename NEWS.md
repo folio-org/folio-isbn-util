@@ -1,3 +1,6 @@
+## 1.7.1 2024-11-27
+* [ISBNUTIL-25](https://folio-org.atlassian.net/browse/ISBNUTIL-25) Update plugin version to fix the build
+
 ## 1.7.0 2024-11-21
 * [ISBNUTIL-23](https://folio-org.atlassian.net/browse/ISBNUTIL-23) Upgrade dependencies for Ramsons; fix jackson-core DoS
 
