@@ -3,7 +3,7 @@
 
   <groupId>org.folio</groupId>
   <artifactId>folio-isbn-util</artifactId>
-  <version>1.7.0</version>
+  <version>1.7.1-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>folio-isbn-util</name>
   <organization>
