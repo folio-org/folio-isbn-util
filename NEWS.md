@@ -1,3 +1,6 @@
+## 1.8.0 2025-XX-XX
+* [ISBNUTIL-27](https://folio-org.atlassian.net/browse/ISBNUTIL-27) Update to folio-isbn-util Java 21
+
 ## 1.7.0 2024-11-21
 * [ISBNUTIL-23](https://folio-org.atlassian.net/browse/ISBNUTIL-23) Upgrade dependencies for Ramsons; fix jackson-core DoS
 
