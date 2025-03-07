@@ -1,4 +1,4 @@
-## 1.8.0 2025-XX-XX
+## 1.8.0 2025-03-07
 * [ISBNUTIL-27](https://folio-org.atlassian.net/browse/ISBNUTIL-27) Update to folio-isbn-util Java 21
 
 ## 1.7.0 2024-11-21
