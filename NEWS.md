@@ -1,3 +1,6 @@
+## 1.9.0 2026-04-10
+* Update dependencies
+
 ## 1.8.0 2025-03-07
 * [ISBNUTIL-27](https://folio-org.atlassian.net/browse/ISBNUTIL-27) Update to folio-isbn-util Java 21
 
