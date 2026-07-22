@@ -1,8 +1,41 @@
+## 1.10.0 In Progress
+
+### Breaking changes
+* Description ([ISSUE](https://folio-org.atlassian.net/browse/ISSUE))
+
+### Features
+* Description ([ISSUE](https://folio-org.atlassian.net/browse/ISSUE))
+
+### Bug fixes
+* Description ([ISSUE](https://folio-org.atlassian.net/browse/ISSUE))
+
+### Tech Dept
+* Migrate unit tests from JUnit 4 to JUnit 5
+* Add `maven-checkstyle-plugin` and enforce `folio-java-checkstyle` rules
+* Add `maven-source-plugin` and `maven-javadoc-plugin` to attach sources/javadocs on deploy
+
+### Dependencies
+* Bump `commons-validator` from `1.9.0` to `1.10.1`
+* Bump `com.github.ladutsko:isbn-core` from `1.5.3` to `2.1.0`
+* Bump `org.glassfish.jaxb:jaxb-runtime` from `2.3.9` to `4.0.9`
+* Bump `org.apache.logging.log4j:log4j-core` from `2.25.3` to `2.26.1`
+* Bump `junit` from `4.13.2` to `org.junit.jupiter:junit-jupiter 6.1.2`
+* Bump `maven-enforcer-plugin` from `3.5.0` to `3.6.3`
+* Bump `maven-compiler-plugin` from `3.13.0` to `3.15.0`
+* Bump `maven-surefire-plugin` from `3.5.2` to `3.5.6`
+* Bump `maven-release-plugin` from `3.1.1` to `3.3.1`
+* Add `maven-checkstyle-plugin 3.6.0`
+* Add `checkstyle 13.7.0`
+* Add `folio-java-checkstyle 1.2.0`
+* Add `maven-source-plugin 3.4.0`
+* Add `maven-javadoc-plugin 3.12.0`
+* Remove `maven-shade-plugin`
+
 ## 1.9.0 2026-04-10
 * Update dependencies
 
 ## 1.8.0 2025-03-07
-* [ISBNUTIL-27](https://folio-org.atlassian.net/browse/ISBNUTIL-27) Update to folio-isbn-util Java 21
+* [ISBNUTIL-27](https://folio-org.atlassian.net/browse/ISBNUTIL-27) Update to folio-isbn-util Java 21   
 
 ## 1.7.0 2024-11-21
 * [ISBNUTIL-23](https://folio-org.atlassian.net/browse/ISBNUTIL-23) Upgrade dependencies for Ramsons; fix jackson-core DoS

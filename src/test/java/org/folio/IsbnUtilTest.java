@@ -1,33 +1,18 @@
 package org.folio;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.folio.isbn.IsbnUtil;
-import org.junit.Assert;
+import org.junit.jupiter.api.Test;
 
-/**
- * Unit test for App.
- */
-public class IsbnUtilTest extends TestCase {
+class IsbnUtilTest {
 
-  /**
-   * Create the test case
-   *
-   * @param testName name of the test case
-   */
-  public IsbnUtilTest(String testName) {
-    super(testName);
-  }
-
-  /**
-   * @return the suite of tests being tested
-   */
-  public static Test suite() {
-    return new TestSuite(IsbnUtilTest.class);
-  }
-
-  public void testValid10DigitsIsbn() {
+  @Test
+  void testValid10DigitsIsbn() {
     assertTrue(IsbnUtil.isValid10DigitNumber("1930110995"));
     assertTrue(IsbnUtil.isValid10DigitNumber("1-930110-99-5"));
     assertTrue(IsbnUtil.isValid10DigitNumber("1 930110 99 5"));
@@ -38,7 +23,8 @@ public class IsbnUtilTest extends TestCase {
     assertTrue(IsbnUtil.isValid10DigitNumber("0122746058"));
   }
 
-  public void testValid13DigitsIsbn() {
+  @Test
+  void testValid13DigitsIsbn() {
     assertTrue(IsbnUtil.isValid13DigitNumber("9781930110991"));
     assertTrue(IsbnUtil.isValid13DigitNumber("9781474418416"));
     assertTrue(IsbnUtil.isValid13DigitNumber("9781474418430"));
@@ -51,7 +37,8 @@ public class IsbnUtilTest extends TestCase {
     assertTrue(IsbnUtil.isValid13DigitNumber("9791843123391"));
   }
 
-  public void testInvalid10DigitsIsbn() {
+  @Test
+  void testInvalid10DigitsIsbn() {
     assertFalse(IsbnUtil.isValid10DigitNumber(null));
     assertFalse(IsbnUtil.isValid10DigitNumber(""));
     assertFalse(IsbnUtil.isValid10DigitNumber("012 27460 58"));
@@ -75,7 +62,8 @@ public class IsbnUtilTest extends TestCase {
     assertFalse(IsbnUtil.isValid10DigitNumber(baseCode + "X"));
   }
 
-  public void testInvalid13DigitsIsbn() {
+  @Test
+  void testInvalid13DigitsIsbn() {
     assertFalse(IsbnUtil.isValid13DigitNumber(null));
     assertFalse(IsbnUtil.isValid13DigitNumber(""));
     assertFalse(IsbnUtil.isValid13DigitNumber("97819 301109 91"));
@@ -106,7 +94,8 @@ public class IsbnUtilTest extends TestCase {
     assertFalse(IsbnUtil.isValid13DigitNumber("978179491128"));
   }
 
-  public void testConversion10To13Digits() {
+  @Test
+  void testConversion10To13Digits() {
     assertNull(IsbnUtil.convertTo13DigitNumber(null));
     assertNull(IsbnUtil.convertTo13DigitNumber("978"));
     assertNull(IsbnUtil.convertTo13DigitNumber("8992a83426"));
@@ -129,7 +118,8 @@ public class IsbnUtilTest extends TestCase {
     assertEquals("9780201633856", IsbnUtil.convertTo13DigitNumber(" 0 201 63385 X "));
   }
 
-  public void testConversion13To10Digits() {
+  @Test
+  void testConversion13To10Digits() {
     assertNull(IsbnUtil.convertTo10DigitNumber(null));
     assertNull(IsbnUtil.convertTo10DigitNumber("9790201633856"));
     assertNull(IsbnUtil.convertTo10DigitNumber("9791843123391"));
@@ -154,7 +144,8 @@ public class IsbnUtilTest extends TestCase {
     assertEquals("020163385X", IsbnUtil.convertTo10DigitNumber(" 978 0 201 63385 6 "));
   }
 
-  public void testInsertHyphensToIsbn() {
+  @Test
+  void testInsertHyphensToIsbn() {
     assertEquals("978-0-321-13002-0", IsbnUtil.insertHyphens("9780321130020"));
     assertEquals("0-321-13002-2", IsbnUtil.insertHyphens("0321130022"));
     assertEquals("979-10-90636-07-1", IsbnUtil.insertHyphens("9791090636071"));
@@ -162,16 +153,15 @@ public class IsbnUtilTest extends TestCase {
     assertEquals("999999999-9", IsbnUtil.insertHyphens("9999999999"));
   }
 
-  public void testInsertHyphensToIsbnThrowExceptionWhenSpecifiedInvalidIsbn() {
-    try {
-      IsbnUtil.insertHyphens("BR18694353");
-      fail("Expected IllegalArgumentException when specified invalid ISBN");
-    } catch (IllegalArgumentException e) {
-      Assert.assertNotNull(e);
-    }
+  @Test
+  void testInsertHyphensToIsbnThrowExceptionWhenSpecifiedInvalidIsbn() {
+    assertThrows(IllegalArgumentException.class,
+      () -> IsbnUtil.insertHyphens("BR18694353"),
+      "Expected IllegalArgumentException when specified invalid ISBN");
   }
 
-  public void testRemoveHyphens() {
+  @Test
+  void testRemoveHyphens() {
     assertEquals("9780321130020", IsbnUtil.removeHyphens("978-0-321-13002-0"));
     assertEquals("0321130022", IsbnUtil.removeHyphens("0-321-13002-2"));
     assertEquals("9791090636071", IsbnUtil.removeHyphens("979-10-90636-07-1"));
@@ -179,12 +169,10 @@ public class IsbnUtilTest extends TestCase {
     assertEquals("9999999999", IsbnUtil.removeHyphens("9999999999"));
   }
 
-  public void testRemoveHyphensToIsbnThrowExceptionWhenSpecifiedInvalidIsbn() {
-    try {
-      IsbnUtil.removeHyphens("BR18694353");
-      fail("Expected IllegalArgumentException when specified invalid ISBN");
-    } catch (IllegalArgumentException e) {
-      Assert.assertNotNull(e);
-    }
+  @Test
+  void testRemoveHyphensToIsbnThrowExceptionWhenSpecifiedInvalidIsbn() {
+    assertThrows(IllegalArgumentException.class,
+      () -> IsbnUtil.removeHyphens("BR18694353"),
+      "Expected IllegalArgumentException when specified invalid ISBN");
   }
 }
